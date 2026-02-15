@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pour Esther ❤️</title>
+    <style>
+        :root {
+            --primary-pink: #ff4d6d;
+            --overlay: rgba(0, 0, 0, 0.6); /* Opacité pour la lisibilité */
+        }
+
+        * { box-sizing: border-box; }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Arrière-plan fixe et couvrant toute la page */
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Remplace l'URL ci-dessous par ton image 1440x2560 */
+            background: linear-gradient(var(--overlay), var(--overlay)), 
+                        url('esther.jpeg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            transform: scale(1.1); /* Petit zoom pour l'effet d'entrée */
+            animation: slowZoom 20s infinite alternate;
+        }
+
+        .main-content {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 5px;
+            text-shadow: 0 0 20px rgba(255, 77, 109, 0.8);
+            animation: heartBeat 2s infinite;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        /* Accordéon Moderne */
+        .accordion-container {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .acc-item {
+            margin-bottom: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .acc-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-pink);
+        }
+
+        .acc-header {
+            width: 100%;
+            padding: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .acc-icon {
+            transition: transform 0.4s;
+            color: var(--primary-pink);
+            font-size: 1.5rem;
+        }
+
+        .acc-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .acc-content p {
+            padding: 20px;
+            margin: 0;
+            line-height: 1.7;
+            font-size: 1rem;
+            color: #ffe5ec;
+        }
+
+        .active .acc-content {
+            max-height: 300px;
+        }
+
+        .active .acc-icon {
+            transform: rotate(45deg);
+        }
+
+        /* Musique */
+        .music-player {
+            margin-top: auto;
+            background: rgba(0,0,0,0.4);
+            padding: 15px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            70% { transform: scale(1); }
+        }
+
+        @keyframes slowZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.15); }
+        }
+
+        /* Cœurs volants */
+        .heart-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 100;
+            animation: fly linear forwards;
+        }
+
+        @keyframes fly {
+            to { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-image"></div>
+
+    <div class="main-content">
+        <h1>Esther</h1>
+        <p class="tagline">Pour toi, en ce jour spécial</p>
+
+        <div class="accordion-container" id="accordion">
+            <div class="acc-item">
+                <button class="acc-header">Une pensée pour toi... <span class="acc-icon">+</span></button>
+                <div class="acc-content">
+                    <p>Chaque fois que je pense à toi, Esther, je ne peux m'empêcher de sourire. Ta présence a ce petit quelque chose de magique qui illumine tout autour de toi.</p>
+                </div>
+            </div>
+
+            <div class="acc-item">
+                <button class="acc-header">Ce que j'admire... <span class="acc-icon">+</span></button>
+                <div class="acc-content">
+                    <p>J'admire ta personnalité et cette énergie que tu dégages. J'aimerais vraiment avoir la chance de découvrir la personne incroyable que tu es, plus en profondeur.</p>
+                </div>
+            </div>
+
+            <div class="acc-item">
+                <button class="acc-header">Ma petite déclaration... <span class="acc-icon">+</span></button>
+                <div class="acc-content">
+                    <p>La Saint-Valentin n'est qu'un prétexte pour te dire ce que j'ai sur le cœur : tu me plais énormément. Accepterais-tu que l'on se voie bientôt ?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="music-player">
+            <span>🎵 Musique pour toi</span>
+            <audio id="player" loop>
+                <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+            </audio>
+            <button onclick="toggleMusic()" id="musicBtn" style="background:var(--primary-pink); border:none; border-radius:50%; width:40px; height:40px; color:white; cursor:pointer;">▶</button>
+        </div>
+    </div>
+
+    <script>
+        
+        // JS pour l'accordéon
+        const items = document.querySelectorAll('.acc-item');
+        
+        items.forEach(item => {
+            const header = item.querySelector('.acc-header');
+            header.addEventListener('click', () => {
+                const isOpen = item.classList.contains('active');
+                
+                // Ferme tous les autres
+                items.forEach(i => i.classList.remove('active'));
+                
+                // Ouvre celui cliqué s'il n'était pas ouvert
+                if (!isOpen) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Gestion Musique
+        const audio = document.getElementById('player');
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                document.getElementById('musicBtn').innerText = "⏸";
+            } else {
+                audio.pause();
+                document.getElementById('musicBtn').innerText = "▶";
+            }
+        }
+
+        // Système de cœurs animés au clic et aléatoire
+        function createHeart(x, y) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            heart.innerHTML = '❤️';
+            heart.style.left = (x || Math.random() * 100) + (x ? 'px' : 'vw');
+            heart.style.top = (y || 100) + (y ? 'px' : 'vh');
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+
+        // Cœurs aléatoires
+        setInterval(() => createHeart(), 500);
+
+        // Cœurs au clic
+        document.addEventListener('click', (e) => {
+            for(let i=0; i<5; i++) {
+                createHeart(e.clientX, e.clientY);
+            }
+        });
+    </script>
+</body>
+</html>
