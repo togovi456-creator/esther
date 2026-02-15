@@ -210,61 +210,61 @@
         </div>
     </div>
 
-    <script>
-        
-        // JS pour l'accordéon
-        const items = document.querySelectorAll('.acc-item');
-        
-        items.forEach(item => {
-            const header = item.querySelector('.acc-header');
-            header.addEventListener('click', () => {
-                const isOpen = item.classList.contains('active');
-                
-                // Ferme tous les autres
-                items.forEach(i => i.classList.remove('active'));
-                
-                // Ouvre celui cliqué s'il n'était pas ouvert
-                if (!isOpen) {
-                    item.classList.add('active');
-                }
-            });
-        });
-
-        // Gestion Musique
-        const audio = document.getElementById('player');
-        function toggleMusic() {
-            if (audio.paused) {
-                audio.play();
-                document.getElementById('musicBtn').innerText = "⏸";
-            } else {
-                audio.pause();
-                document.getElementById('musicBtn').innerText = "▶";
-            }
-        }
-
-        // Système de cœurs animés au clic et aléatoire
-        function createHeart(x, y) {
-            const heart = document.createElement('div');
-            heart.classList.add('heart-particle');
-            heart.innerHTML = '❤️';
-            heart.style.left = (x || Math.random() * 100) + (x ? 'px' : 'vw');
-            heart.style.top = (y || 100) + (y ? 'px' : 'vh');
-            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 4000);
-        }
-
-        // Cœurs aléatoires
-        setInterval(() => createHeart(), 500);
-
-        // Cœurs au clic
-        document.addEventListener('click', (e) => {
-            for(let i=0; i<5; i++) {
-                createHeart(e.clientX, e.clientY);
+   <script>
+    // JS pour l'accordéon (Inchangé)
+    const items = document.querySelectorAll('.acc-item');
+    items.forEach(item => {
+        const header = item.querySelector('.acc-header');
+        header.addEventListener('click', () => {
+            const isOpen = item.classList.contains('active');
+            items.forEach(i => i.classList.remove('active'));
+            if (!isOpen) {
+                item.classList.add('active');
             }
         });
-    </script>
+    });
+
+    // Gestion Musique (Inchangé)
+    const audio = document.getElementById('player');
+    function toggleMusic() {
+        if (audio.paused) {
+            audio.play();
+            document.getElementById('musicBtn').innerText = "⏸";
+        } else {
+            audio.pause();
+            document.getElementById('musicBtn').innerText = "▶";
+        }
+    }
+
+    // --- NOUVEAU : Démarrer la musique au premier clic/toucher n'importe où ---
+    document.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+            document.getElementById('musicBtn').innerText = "⏸";
+        }
+    }, { once: true }); // Le paramètre "once" permet de ne le faire qu'une seule fois
+
+    // Système de cœurs (Inchangé)
+    function createHeart(x, y) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart-particle');
+        heart.innerHTML = '❤️';
+        heart.style.left = (x || Math.random() * 100) + (x ? 'px' : 'vw');
+        heart.style.top = (y || 100) + (y ? 'px' : 'vh');
+        heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+        heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+    }
+
+    setInterval(() => createHeart(), 500);
+
+    document.addEventListener('click', (e) => {
+        for(let i=0; i<5; i++) {
+            createHeart(e.clientX, e.clientY);
+        }
+    });
+</script>
 </body>
 </html>
